@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('PreBuild-Email') {
            steps {
-               script {
+               /*script {
                    def mailRecipients = 'rcardenas@cntcloud.com'
                    def jobName = currentBuild.fullDisplayName
                    //emailext body: '''${SCRIPT, template="groovy-html.template"}''',
@@ -16,7 +16,7 @@ pipeline {
                        replyTo: "${mailRecipients}",
                        recipientProviders: [[$class: 'CulpritsRecipientProvider']]
                     }
-                }
+                }*/
         stage('Build') {
             steps {
                 echo 'Building stage!'
