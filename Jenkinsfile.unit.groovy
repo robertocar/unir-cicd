@@ -3,8 +3,8 @@ pipeline {
         label 'docker'
     }
     stages {
-        stage('PreBuild-Email') {
-           /*steps {
+        /*stage('PreBuild-Email') {
+           steps {
                script {
                    def mailRecipients = 'rcardenas@cntcloud.com'
                    def jobName = currentBuild.fullDisplayName
