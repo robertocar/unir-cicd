@@ -61,4 +61,5 @@ pipeline {
                     subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
         }
     }
+    }
 }
