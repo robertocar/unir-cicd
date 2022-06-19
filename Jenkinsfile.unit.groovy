@@ -15,8 +15,8 @@ pipeline {
                        to: "${mailRecipients}",
                        replyTo: "${mailRecipients}",
                        recipientProviders: [[$class: 'CulpritsRecipientProvider']]
-        }
-        }
+                    }
+                }
 
         stage('Build') {
             steps {
@@ -43,7 +43,6 @@ pipeline {
             }
         }
 
-
     }
     post {
         always {
@@ -61,4 +60,5 @@ pipeline {
                     to: "${EMAIL_TO}", 
                     subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
         }
+    }
 }
