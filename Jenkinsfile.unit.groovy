@@ -3,7 +3,7 @@ pipeline {
         label 'docker'
     }
     stages {
-        /*stage('PreBuild-Email') {
+        stage('PreBuild-Email') {
            steps {
                script {
                    def mailRecipients = 'rcardenas@cntcloud.com'
@@ -16,7 +16,7 @@ pipeline {
                        replyTo: "${mailRecipients}",
                        recipientProviders: [[$class: 'CulpritsRecipientProvider']]
                     }
-                }*/
+                }
         stage('Build') {
             steps {
                 echo 'Building stage!'
