@@ -55,7 +55,7 @@ pipeline {
                     subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'*/
            /*echo "Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}, 
                     to: "${EMAIL_TO}", */
-            echo   "Al parecer existe un error en el trabajo: ${env.JOB_NAME}\n Número:${env.BUILD_NUMBER} "
+            echo   "ESTIMADO USUARIO\nAl parecer existe un error en el trabajo: ${env.JOB_NAME}\nNúmero:${env.BUILD_NUMBER}\nPara mas detalles por fvaor revisar:${env.BUILD_URL}"
         
         }
     }
