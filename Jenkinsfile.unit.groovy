@@ -10,7 +10,7 @@ pipeline {
                    def mailRecipients = 'rcardenas@cntcloud.com'
                    def jobName = currentBuild.fullDisplayName
                    //emailext body: '''${SCRIPT, template="groovy-html.template"}''',
-                   emailext body: '''Estimado Usuario''',
+                   emailext body: '''ESTIMADO USUARIO''',
                        mimeTye: 'text/html',
                        subject: "[Jenkins] ha empezado ${jobName}",
                        to: "${mailRecipients}",
@@ -53,7 +53,9 @@ pipeline {
             /*Como las PRUEBAS QUE SE VALIDA EN EL PIPELINE SON POSITIVAS 
             el nombre de las variables (nombre del proyecto, número de construccíon y URL de construcción)
             son verificales con el estado existoso del pipeline*/
-            echo   "ESTIMADO USUARIO\n Al parecer existe un error en el trabajo: ${currentBuild.fullDisplayName}\n Número:${env.BUILD_NUMBER}\n Compruebe la salida de la consola en:${env.BUILD_URL} para ver los resultados"
+            echo   "emailext body: Compruebe la salida de la consola en:${env.BUILD_URL} para ver los resultados \n"
+            echo   "para: ${mailRecipients}"
+            echo   "asunto: La construcción falló en Jenkins: ${jobName} - Número:${env.BUILD_NUMBER}"
         }
         /*CODIGO A UTILIZAR EN CASO DE QUE EL PIPELINE FALLE*/
         /*failure {
