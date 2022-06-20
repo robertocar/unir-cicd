@@ -48,6 +48,7 @@ pipeline {
     post {
         always {
             junit 'results/*_result.xml'
+            echo   'subject: Build failed in Jenkins'
             //echo 'subject: Build failed in Jenkins:  $jobName'
         }
         failure {
