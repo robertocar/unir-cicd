@@ -53,7 +53,7 @@ pipeline {
             /*Como las PRUEBAS QUE SE VALIDA EN EL PIPELINE SON POSITIVAS
             el nombre de las variables (nombre del proyecto, número de construccíon y URL de construcción)
             son verificales con el estado existoso del pipeline*/
-            echo   "emailext body: Compruebe la salida de la consola en:${env.BUILD_URL} para ver los resultados \n para: rcardenas@cntcloud.com \n asunto: La construcción falló en Jenkins: ${currentBuild.fullDisplayName} - Número:${env.BUILD_NUMBER}"
+            echo   "emailext body: Compruebe la salida de la consola en:${env.BUILD_URL} para ver los resultados \n para: rcardenas@cntcloud.com \n asunto: La construcción falló en Jenkins: ${currentBuild.fullDisplayName}"
         }
         /*CODIGO A UTILIZAR EN CASO DE QUE EL PIPELINE FALLE*/
         /*failure {
