@@ -3,16 +3,16 @@ pipeline {
         label 'docker'
     }
     stages {
+        //FASE UTILIZADA PARA PRE CONSTRUIR EL CORREO
         stage('PreBuild-Email') {
            steps {
                script {
                    def mailRecipients = 'rcardenas@cntcloud.com'
                    def jobName = currentBuild.fullDisplayName
-                   def numEje = env.BUILD_NUMBER
                    //emailext body: '''${SCRIPT, template="groovy-html.template"}''',
-                       emailext body: '''Hello''',
+                   //emailext body: '''Estimado Usuario''',
                        mimeTye: 'text/html',
-                       subject: "[Jenkins] Started ${jobName}",
+                       subject: "[Jenkins] ha empezado ${jobName}",
                        to: "${mailRecipients}",
                        replyTo: "${mailRecipients}",
                        recipientProviders: [[$class: 'CulpritsRecipientProvider']]
@@ -50,12 +50,16 @@ pipeline {
             junit 'results/*_result.xml'
         }
         success {
-            /*emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 
-                    to: "${EMAIL_TO}", 
-                    subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'*/
-           /*echo "Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}, 
-                    to: "${EMAIL_TO}", */
-            echo   "ESTIMADO USUARIO\n Al parecer existe un error en el trabajo: ${env.JOB_NAME}\n Número:${env.BUILD_NUMBER}\n Para mas detalles por fvaor revisar:${env.BUILD_URL}"
+            /*Como las PRUEBAS QUE SE VALIDA EN EL PIPELINE SON POSITIVAS 
+            el nombre de las variables (nombre del proyecto, número de construccíon y URL de construcción)
+            son verificales con el estado existoso del pipeline*/
+            echo   "ESTIMADO USUARIO\n Al parecer existe un error en el trabajo: ${currentBuild.fullDisplayName}\n Número:${env.BUILD_NUMBER}\n Compruebe la salida de la consola en:${env.BUILD_URL} para ver los resultados"
         }
+        /*CODIGO A UTILIZAR EN CASO DE QUE EL PIPELINE FALLE*/
+        /*failure {
+            emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 
+                    to: "${EMAIL_TO}", 
+                    subject: 'La Construcción Fallo en  Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
+        }*/
     }
 }
