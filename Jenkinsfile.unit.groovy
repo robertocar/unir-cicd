@@ -10,7 +10,7 @@ pipeline {
                    def mailRecipients = 'rcardenas@cntcloud.com'
                    def jobName = currentBuild.fullDisplayName
                    //emailext body: '''${SCRIPT, template="groovy-html.template"}''',
-                   //emailext body: '''Estimado Usuario''',
+                   emailext body: '''Estimado Usuario''',
                        mimeTye: 'text/html',
                        subject: "[Jenkins] ha empezado ${jobName}",
                        to: "${mailRecipients}",
