@@ -48,7 +48,7 @@ pipeline {
     post {
         always {
             junit 'results/*_result.xml'
-            echo 'subject: Build failed in Jenkins:  $jobName'
+            //echo 'subject: Build failed in Jenkins:  $jobName'
         }
         failure {
             /*emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 
