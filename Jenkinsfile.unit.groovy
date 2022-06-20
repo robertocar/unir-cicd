@@ -48,7 +48,7 @@ pipeline {
     post {
         always {
             junit 'results/*_result.xml'
-            echo "subject: 'Build Success in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'"
+            echo 'subject: 'Build Success in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER''
         }
         
         success {
