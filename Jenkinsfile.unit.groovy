@@ -8,8 +8,9 @@ pipeline {
                script {
                    def mailRecipients = 'rcardenas@cntcloud.com'
                    def jobName = currentBuild.fullDisplayName
+                   def numEje = env.BUILD_NUMBER
                    //emailext body: '''${SCRIPT, template="groovy-html.template"}''',
-                   emailext body: '''Hello''',
+                       emailext body: '''Hello''',
                        mimeTye: 'text/html',
                        subject: "[Jenkins] Started ${jobName}",
                        to: "${mailRecipients}",
@@ -49,16 +50,20 @@ pipeline {
             junit 'results/*_result.xml'
         }
         
-        success {
+        /*success {
             emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 
                     to: "${EMAIL_TO}", 
                     subject: 'Build Success in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
-        }
+        }*/
         
         failure {
-            emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 
+            /*emailext body: 'Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}', 
                     to: "${EMAIL_TO}", 
-                    subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'
+                    subject: 'Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER'*/
+           /*echo "Check console output at $BUILD_URL to view the results. \n\n ${CHANGES} \n\n -------------------------------------------------- \n${BUILD_LOG, maxLines=100, escapeHtml=false}, 
+                    to: "${EMAIL_TO}", */
+            echo   "subject: Build failed in Jenkins: $PROJECT_NAME - #$BUILD_NUMBER"
+        
         }
     }
 }
