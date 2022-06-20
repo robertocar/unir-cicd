@@ -50,12 +50,10 @@ pipeline {
             junit 'results/*_result.xml'
         }
         success {
-            /*Como las PRUEBAS QUE SE VALIDA EN EL PIPELINE SON POSITIVAS 
+            /*Como las PRUEBAS QUE SE VALIDA EN EL PIPELINE SON POSITIVAS
             el nombre de las variables (nombre del proyecto, número de construccíon y URL de construcción)
             son verificales con el estado existoso del pipeline*/
-            echo   "emailext body: Compruebe la salida de la consola en:${env.BUILD_URL} para ver los resultados \n"
-            echo   "para: ${mailRecipients}"
-            echo   "asunto: La construcción falló en Jenkins: ${jobName} - Número:${env.BUILD_NUMBER}"
+            echo   "emailext body: Compruebe la salida de la consola en:${env.BUILD_URL} para ver los resultados \n para: ${mailRecipients}\n asunto: La construcción falló en Jenkins: ${jobName} - Número:${env.BUILD_NUMBER}"
         }
         /*CODIGO A UTILIZAR EN CASO DE QUE EL PIPELINE FALLE*/
         /*failure {
